@@ -1,0 +1,186 @@
+% arara: clean: { extensions: [ aux, bbl, blg, fdb_latexmk, fls, log, out, synctex.gz, toc ]}
+
+\documentclass[12pt,a4paper]{article}
+
+
+% \Usepackages ============================================
+% Standard et geometry ------------------------------------
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[english]{babel}
+\usepackage[margin=2.5cm]{geometry}
+\usepackage{enumitem}
+\usepackage{caption}
+\usepackage{subcaption}
+
+% Links and drawing ---------------------------------------
+\usepackage[colorlinks]{hyperref}
+\usepackage{tikz}
+
+% Math ----------------------------------------------------
+\usepackage{amsmath,amssymb,amsfonts,amsthm}
+\usepackage{mathtools,mathrsfs}
+\usepackage[capitalize,nameinlink]{cleveref}
+\allowdisplaybreaks{}
+
+
+% Colors ==================================================
+% \definecolor --------------------------------------------
+\definecolor{coGB}{HTML}{1F77B4}
+\definecolor{coWG}{HTML}{2CA02C}
+\definecolor{coAR}{HTML}{D62728}
+
+\newcommand{\Rd}{\color{coAR}}
+\newcommand{\Bu}{\color{coGB}}
+\newcommand{\Gr}{\color{coWG}}
+% \hypersetup ---------------------------------------------
+\hypersetup{
+    colorlinks = True,
+    linkcolor  = coAR,
+    citecolor  = coWG,
+    urlcolor   = coGB,
+}
+
+
+% Math ====================================================
+% \mathbb -------------------------------------------------
+\newcommand{\bbC}{\mathbb{C}}
+\newcommand{\bbN}{\mathbb{N}}
+\newcommand{\bbR}{\mathbb{R}}
+\newcommand{\bbS}{\mathbb{S}}
+\newcommand{\bbZ}{\mathbb{Z}}
+
+% \mathscr ------------------------------------------------
+\newcommand{\scrC}{\mathscr{C}}
+
+% \mathrm -------------------------------------------------
+\newcommand{\rmL}{\mathrm{L}}
+\newcommand{\rmH}{\mathrm{H}}
+
+% Constants -----------------------------------------------
+\newcommand{\ex}{\mathsf{e}}
+\newcommand{\im}{\mathsf{i}\mkern1mu}
+
+% Functions -----------------------------------------------
+\DeclareMathOperator{\Ai}{\mathsf{Ai}}
+
+% Keywords ------------------------------------------------
+\newcommand{\loc}{\mathrm{loc}}
+\newcommand{\comp}{\mathrm{comp}}
+
+% Operators -----------------------------------------------
+\newcommand{\di}[1]{\mathop{}\!\mathrm{d}#1}
+\DeclareMathOperator{\OO}{\mathcal{O}}
+\DeclareMathOperator{\oo}{\mathcal{\scriptstyle{} O}}
+\DeclareMathOperator{\Div}{div}
+
+% Symbols -------------------------------------------------
+\newcommand{\abs}[1]{\left\lvert#1\right\rvert}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\plr}[1]{\left(#1\right)}
+\newcommand{\clr}[1]{\left[#1\right]}
+
+\newcommand{\restr}[2]{\left. #1\right\rvert_{#2}}
+
+\newcommand{\setst}[2]{\left\lbrace#1\ \middle\vert\ #2\right\rbrace}
+\newcommand{\setwt}[2]{\left\lbrace#1\ {:}\ #2\right\rbrace}
+
+% Vectors -------------------------------------------------
+\renewcommand{\vec}[1]{\boldsymbol{#1}}
+
+% specials ------------------------------------------------
+\newcommand{\eps}{\varepsilon}
+
+
+% Environment =============================================
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}
+\newtheorem{notation}[definition]{Notation}
+\newtheorem{assumption}[definition]{Assumption}
+
+\theoremstyle{plain}
+\newtheorem{lemma}[definition]{Lemma}
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{corollary}[definition]{Corollary}
+
+\theoremstyle{remark}
+\newtheorem{remark}[definition]{Remark}
+\newtheorem{example}[definition]{Example}
+
+
+% Title ===================================================
+\title{Title}
+\author{Firstname \textsc{Lastname}}
+\date{}
+
+
+%==========================================================
+\begin{document}
+
+\maketitle
+
+\tableofcontents
+
+
+%============================
+\section{Mathematical settings}
+%============================
+
+Lorem ipsum $x$ dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua
+$$
+    \int_\Omega f(x) \di{x} = 0.
+$$
+Quam lacus suspendisse $$G = \bbR / \bbZ$$ faucibus interdum.
+Amet cursus
+$
+    x^n + y^n = z^n
+$
+sit amet dictum sit.
+Orci phasellus egestas tellus rutrum
+$$
+    \begin{dcases}
+        \Delta u = 0 \\
+        \text{senectus et $a$ netus et}
+    \end{dcases}
+$$
+tellus pellentesque eu tincidunt. Neque sodales ut etiam sit amet nisl.
+Leo in vitae turpis massa
+$$
+    E = m c^2 % porttitor lacus luctus accumsan
+$$
+Lorem ipsum dolor sit amet consectetur.
+Egestas quis ipsum suspendisse ultrices gravida dictum fusce.
+Tincidunt vitae semper quis lectus nulla at.
+% Aliquet eget sit amet tellus cras adipiscing enim
+% $$
+%     \mathfrak{To\ be\ forgoten}.
+% $$
+Amet nisl suscipit adipiscing bibendum est ultricies integer.
+Nunc sed blandit libero volutpat sed.
+
+Faucibus interdum posuere \(x\) lorem ipsum dolor sit.
+In fermentum posuere urna nec tincidunt.
+Tortor at risus viverra adipiscing at
+\[
+    A = \setst{x \in E}{g(x) = 0} % \[ haha \]
+\]
+Hendrerit gravida rutrum quisque non tellus.
+Augue mauris augue neque gravida \[\Pi[f](x) = \frac{f(x) + f(-x)}{2}\] in fermentum et sollicitudin.
+Convallis convallis tellus id interdum velit.
+Adipiscing elit duis tristique sollicitudin nibh sit amet commodo nulla.
+% Purus non enim praesent elementum facilisis
+% \[
+%     \mathfrak{To\ be\ forgoten}.
+% \]
+In hendrerit gravida rutrum quisque non.
+Non consectetur a erat nam at.
+Ipsum consequat nisl vel pretium lectus.
+% \[ \mathfrak{To\ be\ forgoten} \]
+Donec adipiscing tristique risus nec feugiat in fermentum posuere.
+Hac habitasse platea dictumst quisque sagittis purus sit amet.
+Tincidunt ornare massa eget egestas.
+Amet massa vitae tortor condimentum lacinia quis vel.
+Placerat orci nulla pellentesque dignissim enim.
+Purus non enim praesent elementum facilisis leo vel fringilla est.
+
+\end{document}
