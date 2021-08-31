@@ -1,6 +1,6 @@
 # replace_dollar
 
-Replace the Tex commands `$ $` and `$$ $$` by the LaTeX commands `\( \)` and `\[ \]` in `.tex` files.
+Replace the Tex commands `$...$` and `$$...$$` by the LaTeX commands `\(...\)` and `\[...\]` in `.tex` files.
 
 ## Requirements
 
@@ -79,9 +79,9 @@ optional arguments:
 
 ## Pattern that does not works
 
-- If there is `$` sign that does not correspond to inline math environment `$ ... $`.
+- If there is `$` sign that does not correspond to inline math environment `$...$`.
 
-- If there is `$$` sign that does not correspond to display math environment `$$ ... $$`.
+- If there is `$$` sign that does not correspond to display math environment `$$...$$`.
 
 - Nesting with inline math for example `$ \text{$x$} $`.
 
