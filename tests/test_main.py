@@ -1,26 +1,24 @@
 """ Test __main__ """
 
 import filecmp
-import os
+from pathlib import Path
 from shutil import copyfile
 
 from replace_dollar.__main__ import main, make_bakup
 
-DIR = f"{os.getcwd()}/tests/"
+DIRECTORY = Path.cwd().joinpath("tests", "files")
 
 
 def test_make_clean():
-    make_bakup(DIR, "file.tex")
-    assert filecmp.cmp(f"{DIR}file.tex", f"{DIR}file.tex.bak")
+    """test clean"""
+    make_bakup(DIRECTORY.joinpath("main.tex"))
+    assert filecmp.cmp(DIRECTORY.joinpath("main.tex"), DIRECTORY.joinpath("main.bak"))
 
 
 def test_main():
-    copyfile(f"{DIR}files/file.tex", f"{DIR}file.tex")
-    main(DIR, ["file.tex"])
-    assert filecmp.cmp(f"{DIR}file.tex", f"{DIR}files/reference.tex")
-
-
-def test_main_pretty():
-    copyfile(f"{DIR}files/file.tex", f"{DIR}file.tex")
-    main(DIR, ["-p", "file.tex"])
-    assert filecmp.cmp(f"{DIR}file.tex", f"{DIR}files/reference_pretty.tex")
+    """main"""
+    copyfile(DIRECTORY.joinpath("main_tex.tex"), DIRECTORY.joinpath("main.tex"))
+    main(DIRECTORY, ["main.tex"])
+    assert filecmp.cmp(
+        DIRECTORY.joinpath("main.tex"), DIRECTORY.joinpath("main_latex.tex")
+    )

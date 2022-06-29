@@ -21,9 +21,10 @@ remove_ext() {
     done
 }
 
+remove_dir "__pycache__"
 remove_dir ".mypy_cache"
 remove_dir ".pytest_cache"
-remove_dir "__pycache__"
+remove_dir "htmlcov"
 
 remove_file ".coverage"
 

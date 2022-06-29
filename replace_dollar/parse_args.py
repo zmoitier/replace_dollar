@@ -5,8 +5,16 @@ from pathlib import Path
 
 DESCRIPTION = (
     "Replace the Tex commands $...$ and $$...$$ by the LaTeX "
-    "commands \\(...\\) and \\[...\\] in `.tex` files."
+    "commands \\( ... \\) and \\[\n    ...\n\\] in `.tex` files."
 )
+
+
+def _check_file_exist(filepaths: set[Path]) -> None:
+    """Check if a file exist."""
+    for filepath in filepaths:
+        print(filepath)
+        if not filepath.is_file():
+            raise FileNotFoundError(f"the file {filepath} does not exist.")
 
 
 def parse_args(directory: Path, argv: list[str]) -> tuple[set[Path], bool]:
@@ -45,5 +53,6 @@ def parse_args(directory: Path, argv: list[str]) -> tuple[set[Path], bool]:
             directory.joinpath(filename)
             for filename in filter(lambda s: s.endswith(".tex"), args.filename)
         )
+        _check_file_exist(set_search)
 
     return (set_search, args.pretty)

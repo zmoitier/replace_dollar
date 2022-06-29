@@ -34,7 +34,7 @@ multi_line_output = 3
 
 [tool.pytest.ini_options]
 minversion = "6.0"
-addopts = "--cov=replace_dollar --ff -x --no-cov-on-fail --durations=10"
+addopts = "--cov=replace_dollar --cov-report html --ff -x --no-cov-on-fail --durations=10"
 testpaths = [
     "tests/"
 ]

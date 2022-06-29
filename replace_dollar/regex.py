@@ -1,14 +1,35 @@
-""" Use regex to do substitution """
+""" Use regex to do substitution
+
+    The regular expressions used here are heavily inspire by the one in the post
+    https://stackoverflow.com/questions/14182879/regex-to-match-latex-equations.
+    https://stackoverflow.com/questions/2973436/regex-lookahead-lookbehind-and-atomic-groups
+"""
 
 import re
 
-DOUBLE_DOLLAR = r"\$\$(.+?)\$\$"
+SIMPLE_DOLLAR = r"""
+(?<!\\)
+(?:
+    ((?<!\$)\${1}(?!\$))
+)
+(.*?)
+(?<!\\)
+(?<!\$)\1(?!\$)
+"""
 
-SIMPLE_DOLLAR = r"\$(.+?)\$"
+DOUBLE_DOLLAR = r"""
+(?<!\\)
+(?:
+    ((?<!\$)\${2}(?!\$))
+)
+(.*?)
+(?<!\\)
+(?<!\$)\1(?!\$)
+"""
 
 SUB_DOLLAR = [
-    (re.compile(DOUBLE_DOLLAR, flags=re.DOTALL), r"\[\1\]"),
-    (re.compile(SIMPLE_DOLLAR, flags=re.DOTALL), r"\\(\1\\)"),
+    (re.compile(DOUBLE_DOLLAR, flags=re.MULTILINE | re.DOTALL | re.VERBOSE), r"\[\2\]"),
+    (re.compile(SIMPLE_DOLLAR, flags=re.MULTILINE | re.DOTALL | re.VERBOSE), r"\(\2\)"),
 ]
 
 SUB_PRETTY = [
@@ -19,10 +40,14 @@ SUB_PRETTY = [
 ]
 
 
-def do_substitution(content: str, pattern_sub: list[tuple[re.Pattern, str]]) -> str:
+def do_substitution(content: str, pretty: bool) -> str:
     """Do the substitution using pattern and sub."""
 
-    for pattern, sub in pattern_sub:
+    for pattern, sub in SUB_DOLLAR:
         content = pattern.sub(sub, content)
+
+    if pretty:
+        for pattern, sub in SUB_PRETTY:
+            content = pattern.sub(sub, content)
 
     return content

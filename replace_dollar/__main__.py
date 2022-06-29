@@ -1,32 +1,33 @@
 """ Main file """
 
-import re
 import sys
 from pathlib import Path
 from shutil import copyfile
 
 from .parse_args import parse_args
-from .regex import SUB_DOLLAR, SUB_PRETTY, do_substitution
+from .regex import do_substitution
 
 
+# pylint: disable=useless-return
 def make_bakup(filepath: Path) -> None:
     """Make a bakup of the file."""
     copyfile(filepath, filepath.parent.joinpath(f"{filepath.stem}.bak"))
     return None
 
 
-def process_file(filepath: Path, pattern_sub: list[tuple[re.Pattern, str]]) -> None:
+# pylint: disable=useless-return
+def process_file(filepath: Path, pretty: bool) -> None:
     """Process the file"""
 
-    print(f"Processing file `{filepath.name}`")
+    print(f"Processing file ´{filepath.name}´")
 
     make_bakup(filepath)
-    print(f"  > bakup file `{filepath.stem}.bak` created")
+    print(f"  > bakup file ´{filepath.stem}.bak´ created")
 
     with open(filepath, "r", encoding="utf-8") as file:
         content = file.read()
 
-    content = do_substitution(content, pattern_sub)
+    content = do_substitution(content, pretty)
 
     with open(filepath, "w", encoding="utf-8") as file:
         file.write(content)
@@ -36,6 +37,7 @@ def process_file(filepath: Path, pattern_sub: list[tuple[re.Pattern, str]]) -> N
     return None
 
 
+# pylint: disable=useless-return
 def main(directory: Path, argv: list[str]) -> None:
     """Main function"""
 
@@ -44,13 +46,8 @@ def main(directory: Path, argv: list[str]) -> None:
     if not filepaths:
         sys.exit(f"No files found in {directory}")
 
-    if pretty:
-        pattern_sub = [*SUB_DOLLAR, *SUB_PRETTY]
-    else:
-        pattern_sub = SUB_DOLLAR
-
     for filepath in filepaths:
-        process_file(filepath, pattern_sub)
+        process_file(filepath, pretty)
 
     return None
 

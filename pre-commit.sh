@@ -15,12 +15,12 @@ echo "--------"
 python3 -m mypy replace_dollar/
 echo ""
 
-echo "run mypy"
+echo "run pylint"
 echo "--------"
 python3 -m pylint replace_dollar/
 echo ""
 
-# echo "run pytest"
-# echo "----------"
-# python3 -m pytest .
-# echo ""
+echo "run pytest"
+echo "----------"
+python3 -m pytest tests/
+echo ""

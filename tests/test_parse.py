@@ -1,28 +1,31 @@
 """ Test parse """
 
-import os
+from pathlib import Path
 
 import pytest
 
 from replace_dollar.parse_args import parse_args
 
-DIR = f"{os.getcwd()}/tests/"
+DIRECTORY = Path.cwd().joinpath("tests", "files")
 
 
-def test_pretty():
-    _, p = parse_args(DIR, ["-p", "."])
-    assert p
+def test_not_file():
+    """test parsing"""
+    with pytest.raises(FileNotFoundError):
+        parse_args(DIRECTORY, ["file.tex"])
 
 
 data_file = [
-    (["."], {"file.tex"}),
-    (["file.tex"], {"file.tex"}),
-    (["file1.tex", "file2.tex"], {"file1.tex", "file2.tex"}),
-    (["file1.tex", "file2.txt", "file3.tex"], {"file1.tex", "file3.tex"}),
+    (["main.tex"], {"main.tex"}),
+    (["main.txt"], set()),
+    (["main.tex", "main_tex.tex"], {"main.tex", "main_tex.tex"}),
+    (["main.tex", "main.txt"], {"main.tex"}),
+    (["."], {"main.tex", "main_tex.tex", "main_latex.tex"}),
 ]
 
 
 @pytest.mark.parametrize("data,result", data_file)
 def test_file(data, result):
-    filenames, _ = parse_args(DIR, data)
+    """test parsing"""
+    filenames = set(filepath.name for filepath in parse_args(DIRECTORY, data)[0])
     assert filenames == result
