@@ -9,6 +9,4 @@
     commands \\(...\\) and \\[...\\] in `.tex` files.
 """
 
-__version__ = "1.0.0"
-
-from .__main__ import main
+__version__ = "2.0.0.dev0"

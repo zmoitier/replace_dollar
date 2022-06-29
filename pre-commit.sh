@@ -12,10 +12,15 @@ echo ""
 
 echo "run mypy"
 echo "--------"
-mypy replace_dollar
+python3 -m mypy replace_dollar/
 echo ""
 
-echo "run pytest"
-echo "----------"
-python3 -m pytest .
+echo "run mypy"
+echo "--------"
+python3 -m pylint replace_dollar/
 echo ""
+
+# echo "run pytest"
+# echo "----------"
+# python3 -m pytest .
+# echo ""

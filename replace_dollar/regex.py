@@ -1,7 +1,6 @@
 """ Use regex to do substitution """
 
 import re
-from typing import Tuple
 
 DOUBLE_DOLLAR = r"\$\$(.+?)\$\$"
 
@@ -20,7 +19,7 @@ SUB_PRETTY = [
 ]
 
 
-def do_substitution(content: str, pattern_sub: list[Tuple[re.Pattern, str]]) -> str:
+def do_substitution(content: str, pattern_sub: list[tuple[re.Pattern, str]]) -> str:
     """Do the substitution using pattern and sub."""
 
     for pattern, sub in pattern_sub:

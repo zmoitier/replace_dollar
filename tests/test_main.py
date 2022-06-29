@@ -1,4 +1,5 @@
 """ Test __main__ """
+
 import filecmp
 import os
 from shutil import copyfile

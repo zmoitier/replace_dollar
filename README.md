@@ -77,7 +77,7 @@ optional arguments:
                 do nothing on \[ ... \] in commented section
 ```
 
-## Pattern that does not works
+## Pattern that does not work
 
 - If there is `$` sign that does not correspond to inline math environment `$...$`.
 

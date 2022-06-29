@@ -1,4 +1,5 @@
 """ Test substitution on string """
+
 import pytest
 
 from replace_dollar.regex import SUB_DOLLAR, SUB_PRETTY, do_substitution
