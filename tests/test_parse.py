@@ -8,9 +8,24 @@ from replace_dollar.parse_args import parse_args
 
 DIRECTORY = Path.cwd().joinpath("tests", "files")
 
+data_pretty = [(["."], False), (["-s", "."], True)]
 
-def test_not_file():
-    """test parsing"""
+
+@pytest.mark.parametrize("data,result", data_pretty)
+def test_pretty(data, result):
+    """Test parsing the space flag."""
+    _, pretty = parse_args(DIRECTORY, data)
+    assert pretty == result
+
+
+def test_empty_dir():
+    """Test empty directory."""
+    with pytest.raises(FileNotFoundError):
+        parse_args(Path.cwd().joinpath("tests"), ["."])
+
+
+def test_file_not_found():
+    """Test file not found."""
     with pytest.raises(FileNotFoundError):
         parse_args(DIRECTORY, ["file.tex"])
 

@@ -9,6 +9,14 @@ DESCRIPTION = (
 )
 
 
+def _check_empty_dir(directory: Path, filepaths: set[Path]):
+    """Check if the direcoty does not containt tex files."""
+    if not filepaths:
+        raise FileNotFoundError(
+            f"the directory {directory} does not containt any ´.tex´ files."
+        )
+
+
 def _check_file_exist(filepaths: set[Path]) -> None:
     """Check if a file exist."""
     for filepath in filepaths:
@@ -34,12 +42,9 @@ def parse_args(directory: Path, argv: list[str]) -> tuple[set[Path], bool]:
     )
 
     parser.add_argument(
-        "-p",
-        "--pretty",
-        help=(
-            "add space to \\( ... \\) and newline to \\[\\n ... \\n\\]\n"
-            "do nothing on \\[ ... \\] in commented section"
-        ),
+        "-s",
+        "--space",
+        help=("add space to \\( ... \\) and \\[ ... \\]"),
         action=argparse.BooleanOptionalAction,
         default=False,
     )
@@ -48,6 +53,7 @@ def parse_args(directory: Path, argv: list[str]) -> tuple[set[Path], bool]:
 
     if "." in args.filename:
         set_search = set(directory.glob("*.tex"))
+        _check_empty_dir(directory, set_search)
     else:
         set_search = set(
             directory.joinpath(filename)
@@ -55,4 +61,4 @@ def parse_args(directory: Path, argv: list[str]) -> tuple[set[Path], bool]:
         )
         _check_file_exist(set_search)
 
-    return (set_search, args.pretty)
+    return (set_search, args.space)

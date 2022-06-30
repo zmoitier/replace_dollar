@@ -41,13 +41,10 @@ def process_file(filepath: Path, pretty: bool) -> None:
 def main(directory: Path, argv: list[str]) -> None:
     """Main function"""
 
-    filepaths, pretty = parse_args(directory, argv)
-
-    if not filepaths:
-        sys.exit(f"No files found in {directory}")
+    filepaths, space = parse_args(directory, argv)
 
     for filepath in filepaths:
-        process_file(filepath, pretty)
+        process_file(filepath, space)
 
     return None
 
