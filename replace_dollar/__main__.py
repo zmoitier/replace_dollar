@@ -1,4 +1,4 @@
-""" Main file """
+"""Main file."""
 
 import sys
 from pathlib import Path
@@ -8,16 +8,13 @@ from .parse_args import parse_args
 from .regex import do_substitution
 
 
-# pylint: disable=useless-return
 def make_bakup(filepath: Path) -> None:
     """Make a bakup of the file."""
     copyfile(filepath, filepath.parent.joinpath(f"{filepath.stem}.bak"))
-    return None
 
 
-# pylint: disable=useless-return
 def process_file(filepath: Path, pretty: bool) -> None:
-    """Process the file"""
+    """Process the file."""
 
     print(f"Processing file ´{filepath.name}´")
 
@@ -34,19 +31,14 @@ def process_file(filepath: Path, pretty: bool) -> None:
 
     print("  > substitution done!", end="\n\n")
 
-    return None
 
-
-# pylint: disable=useless-return
 def main(directory: Path, argv: list[str]) -> None:
-    """Main function"""
+    """Main function."""
 
     filepaths, space = parse_args(directory, argv)
 
     for filepath in filepaths:
         process_file(filepath, space)
-
-    return None
 
 
 if __name__ == "__main__":

@@ -1,4 +1,4 @@
-""" Test parse """
+"""Test parse."""
 
 from pathlib import Path
 
@@ -41,6 +41,6 @@ data_file = [
 
 @pytest.mark.parametrize("data,result", data_file)
 def test_file(data, result):
-    """test parsing"""
+    """Test parsing."""
     filenames = set(filepath.name for filepath in parse_args(DIRECTORY, data)[0])
     assert filenames == result

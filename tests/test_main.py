@@ -1,4 +1,4 @@
-""" Test __main__ """
+"""Test __main__"""
 
 import filecmp
 from pathlib import Path

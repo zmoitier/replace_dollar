@@ -1,12 +1,12 @@
-""" Replace dollar
+"""Replace dollar.
 
-    Author: Zoïs Moitier
-            Karlsruhe Institute of Technology, Germany
+Author: Zoïs Moitier
+        ENSTA Paris, France
 
-    Description
-    -----------
-    Replace the Tex commands $...$ and $$...$$ by the LaTeX
-    commands \\(...\\) and \\[...\\] in `.tex` files.
+Description
+-----------
+Replace the Tex commands $...$ and $$...$$ by the LaTeX
+commands \\(...\\) and \\[...\\] in `.tex` files.
 """
 
-__version__ = "2.0.0.dev0"
+__version__ = "2.0.1"

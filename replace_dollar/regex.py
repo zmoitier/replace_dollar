@@ -1,7 +1,8 @@
-""" Use regex to do substitution
+"""Use regex to do substitution.
 
-    The regular expressions used here are heavily inspire by the one in the post
-    https://stackoverflow.com/questions/14182879/regex-to-match-latex-equations.
+The regular expressions used here are heavily inspire by the one in the
+post
+https://stackoverflow.com/questions/14182879/regex-to-match-latex-equations.
 """
 
 import re

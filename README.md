@@ -6,20 +6,13 @@ Replace the Tex commands `$...$` and `$$...$$` by the LaTeX commands `\(...\)` a
 
 - Python version:
 
-  - Tested on Python 3.9;
-  - Might works on previous version of Python but not tested.
+  - Tested on Python 3.11;
+  - Might work on previous version of Python but not tested.
 
 - OS:
 
   - Tested on Linux
-  - Might works on Mac and Windows but not tested.
-
-- For development require
-
-  - [isort](https://github.com/PyCQA/isort)
-  - [black](https://github.com/psf/black)
-  - [mypy](https://github.com/python/mypy)
-  - [pytest](https://github.com/pytest-dev/pytest)
+  - Might work on Mac and Windows but not tested.
 
 ## Instructions for use
 
@@ -30,10 +23,10 @@ Download or clone this repository then you can either use it directly or locally
 Go to the folder in which there is the `.tex` files you want to modify and use
 
 ```bash
-python3 path_to_folder/replace_dollar/main.py file.tex
+python path_to_folder/replace_dollar/main.py file.tex
 ```
 
-where `path_to_folder` is replace by the actual path to the folder `replace_dollar` and `file.tex` is the file you want to modify.
+where `path_to_folder` is replaced by the actual path to the folder `replace_dollar` and `file.tex` is the file you want to modify.
 
 ### Local installation
 
@@ -53,7 +46,7 @@ flit install --symlink --user
 Then to use it do
 
 ```bash
-python3 -m replace_dollar file.tex
+python -m replace_dollar file.tex
 ```
 
 where `file.tex` is the file you want to modify.
@@ -64,7 +57,7 @@ When you call it on the file `file.tex`, it will create a backup file `file.tex.
 
 For more option refer to the help command with the option `-h`
 
-```bash
+```
 usage: main.py [-h] [-p] [-c] filename [filename ...]
 
 positional arguments:
@@ -73,8 +66,8 @@ positional arguments:
 
 optional arguments:
   -h, --help    show this help message and exit
-  -p, --pretty  add space to \( ... \) and newline to \[\n ... \n\]
-                do nothing on \[ ... \] in commented section
+  -p, --pretty  add space to \( ... \) and \[ ... \]
+                do nothing in commented section
 ```
 
 ## Pattern that does not work

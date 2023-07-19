@@ -1,4 +1,4 @@
-""" Test substitution on string """
+"""Test substitution on string."""
 
 import pytest
 

@@ -1,4 +1,4 @@
-""" Parse arguments given in the command line """
+"""Parse arguments given in the command line."""
 
 import argparse
 from pathlib import Path
@@ -26,7 +26,7 @@ def _check_file_exist(filepaths: set[Path]) -> None:
 
 
 def parse_args(directory: Path, argv: list[str]) -> tuple[set[Path], bool]:
-    """parse arguments given in the command line"""
+    """Parse arguments given in the command line."""
 
     parser = argparse.ArgumentParser(
         description=DESCRIPTION, formatter_class=argparse.RawTextHelpFormatter
